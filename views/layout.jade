@@ -1,7 +1,22 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	
+	body
+		div(style='float:left')
+		a(href='/') Home
+	
+		div(style="float:right")
+			if (username && authenticated)
+				a(href='/signout') Sign Out
+				a(href='/add_article') Add Article
+				a(href='/profile') Profile
+				span #{username}
+			else
+				a(href='/login') Log In
+				a(href='/register') Register
+				a(href='lostpwd') Forget password
+	
+	block content

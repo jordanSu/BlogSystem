@@ -1,0 +1,14 @@
+extends layout
+
+block content
+	h1 #{mode}
+	form(name="login" action="/apis/login" method="post")
+		div(style="width:20%")
+			p
+				label(style="padding-right:2em") Username
+				input(type="text" name="user")
+			p
+				label(style="padding-right:2.3em") Password
+				input(type="password" name="pwd")
+			p
+				input(style="float:right" type="submit" )

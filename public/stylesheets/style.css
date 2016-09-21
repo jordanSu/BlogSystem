@@ -3,6 +3,12 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a , a:active, a:visited {
+	color: blue;
+	margin: 10px;
+}
+
+span {
+	margin: 10px;
+	font-weight: bold;
 }
