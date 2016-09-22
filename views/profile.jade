@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	div(style='padding:50px;')
+		h1 #{title}
+		h3 A blog for you
+	div(style="width:50%; margin-left:auto; margin-right:auto")
+		for article in blogs
+			div
+				div(style="float:left; margin-top:10px;") #{article.Username}
+				div(style="float:right; margin-top:10px;") #{article.CreateDate}
+				br
+				div(style="clear:both; margin-top:10px;") #{article.Article}
+				a(style="float:right; margin-top:50px; margin-right:20px;" href="/delete/"+article.id) Delete
+				a(style="float:right; margin-top:50px; margin-right:20px;" href="/modify/"+article.id) Modify
+				hr(style="margin-top: 100px;")

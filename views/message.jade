@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div(style="width:50%; margin-left:auto; margin-right:auto;")
+        div(style="float:left; margin-top:10px;") #{article.Username}
+        div(style="float:right; margin-top:10px;") #{article.CreateDate}
+        br
+        div(style="clear:both; margin-top:10px;") #{article.Article}
+        hr(style="margin-top: 100px;")
+
+        h2 留言板
+        for comment in comments
+            div(style="float:left; margin-top:10px;") #{comment.Visitor}
+            div(style="float:right; margin-top:10px;") #{comment.CreateDate}
+            br
+            div(style="clear:both; margin-top:10px;") #{comment.Comment}
+        form(name="message" action="/apis/message" method="post")
+            input(type="hidden" name="articleID" value=articleID)
+            h3 Leave your message here
+            div
+                p
+                    label(style="margin-right: 1em") Visitor:
+                    input(type="text" name="visitor")
+                p
+                    textarea(cols="40" rows="10" style="resize: none" name="Content")
+                div
+                    input(type="submit" name="submit" value="Save" style="margin-right:10px")
+                    input(type="button" name="goback" value="Cancel" onclick="window.location='/'")

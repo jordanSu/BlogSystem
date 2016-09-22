@@ -4,3 +4,12 @@ block content
 	div(style='padding:50px;')
 		h1 #{title}
 		h3 A blog for you
+	
+	for article in blogs
+		div
+			div(style="float:left; margin-top:10px;") #{article.Username}
+			div(style="float:right; margin-top:10px;") #{article.CreateDate}
+			br
+			div(style="clear:both; margin-top:10px;") #{article.Article}
+			a(href="/message/" + article.id, style="float:right; margin-top:50px; margin-right:20px;") Leave a message
+			hr(style="margin-top: 100px;")
