@@ -108,8 +108,13 @@ router.get('/delete/:article_id', function(req, res, next) {
 
 // Leave a message
 router.get('/message/:article_id', function(req, res, next) {
-	if (req.session.name && req.session.logined && req.params.article_id) {
+	if (req.params.article_id) {	// you must have article ID in order to leave a message
+		if (req.session.name && req.session.logined) {
+			res.locals.username = req.session.name;
+			res.locals.logined = req.session.logined;
+		}
 		res.locals.articleID = req.params.article_id;
+
 		Blog.find({ _id: req.params.article_id },
 		function(err, blogs, count) {
 			Comment.find({ MessageID: req.params.article_id },
@@ -119,7 +124,7 @@ router.get('/message/:article_id', function(req, res, next) {
 		})
 	}
 	else {
-		res.send("<script> alert('您尚未登入或文章ID錯誤\n請先登入後再來刪除文章喔\n或是再檢查文章ID'); window.location='/' </script>");
+		res.send("<script> alert('文章ID錯誤\n請再檢查文章ID'); window.location='/' </script>");
 		res.end();
 	}
 });
