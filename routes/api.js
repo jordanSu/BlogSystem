@@ -8,7 +8,6 @@ var User = mongoose.model('User');
 
 // Check login info
 router.post('/login', function(req, res, next) {
-	console.log("hello!");
 	User.find({ Username: req.body.user }, function(err, user, count) {
 		if (user[0]) {
 			var hash = crypto.createHash('sha256');
@@ -33,7 +32,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-	User.find({ Username: req.body.name }, function(err, user, count) {
+	User.find({ Username: req.body.user }, function(err, user, count) {
 		if (user[0]) {
 			res.send("<script> alert('此帳號已被註冊，請選一個新名字'); window.location='/register' </script>");
             res.end();
